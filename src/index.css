@@ -1,5 +1,5 @@
 * {
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
 }
 
@@ -11,23 +11,58 @@ body {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
     'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   background: #c82ecb;
-  display: flex;
+  display: flexbox;
   align-items: center;
   justify-content: center;
 }
+
+header {
+  margin-top: -60px;
+  margin-left: -80px;
+}
+
+@media (max-width: 1000px) {
+  .container {
+    grid-auto-flow: column;
+    max-height: 20rem;
+    max-width: 20rem;
+    padding: 0;
+    margin: auto;
+    justify-content: center;
+  }
+  .card-img {
+    font-size: 4.5rem !important;
+  }
+  .card {
+    width: 3rem;
+    height: 3rem;
+  }
+  .container button {
+    display: block;
+    grid-row: 7/9;
+    left: -89px;
+    max-width: 80px;
+    height: 160px !important;
+  }
+}
+
 h1 {
   margin-top: 5rem;
   margin-bottom: 2.5rem;
 }
 .container {
   height: 100vh;
-  width: 100vh;
+  width: 90vh;
   display: grid;
   justify-content: center;
   align-items: center;
-  grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(6, 1fr);
-  gap: 1rem;
+  grid-template-columns: repeat(8, 1fr);
+
+  /* grid-template-columns: auto auto auto auto; */
+  /* grid-template-rows: auto auto auto auto; */
+  grid-template-rows: repeat(8, 1fr);
+  gap: 1%;
+  flex-direction: column;
 }
 .card {
   background: #fff;
@@ -35,8 +70,8 @@ h1 {
   justify-content: center;
   align-items: center;
   border-radius: 0.5rem;
-  width: 7rem;
-  height: 7rem;
+  width: 5rem;
+  height: 5rem;
   transition: transfrom 0.5s;
   /* transform: rotateY(180deg);
   animation: 2s hideCard linear; */
@@ -53,7 +88,7 @@ h1 {
 }
 
 .card-img {
-  font-size: 5rem;
+  font-size: 4rem;
   transform: scale(0);
   transition: transfrom 0.5s;
   /* animation: 2s hideEmojy linear; */
@@ -84,8 +119,11 @@ h1 {
   background: #560258;
   border-radius: 5px;
   position: relative;
-  left: 578px;
+  grid-column: 7/9;
   padding: 20px 10px;
+  width: 160px;
+  height: 80px;
+  font-size: 1rem;
   color: #fff;
   cursor: pointer;
 }

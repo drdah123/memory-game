@@ -43,6 +43,8 @@ const Cards = () => {
   const [prev, setPrev] = useState(-1);
 
   const check = (current) => {
+    if (cards[current].id === cards[prev].id && cards[current] === cards[prev])
+      return setIsTwo(false);
     if (cards[current].id === cards[prev].id) {
       cards[current].state = 'correct';
       cards[prev].state = 'correct';
@@ -77,25 +79,33 @@ const Cards = () => {
     }
   };
   const startHandler = () => {
-    setIsStart(true);
-  };
-  const stopHandler = () => {
-    setIsStart(false);
+    if (!isStart) return setIsStart(!isStart);
+    setIsStart(!isStart);
     setCards(cardsInfo.sort(() => Math.random() - 0.5));
   };
+  // const stopHandler = () => {
+  //   setIsStart(!isStart);
+  //   setCards(cardsInfo.sort(() => Math.random() - 0.5));
+  // };
 
   return (
     <div className="container">
       {cards.map((item, i) => (
         <Card
+          key={i}
           item={item}
           id={i}
           isStart={isStart}
           selcteHandler={selcteHandler}
         />
       ))}
-      {!isStart && <button onClick={() => startHandler()}>Start Game</button>}
-      {isStart && <button onClick={() => stopHandler()}>Stop Game</button>}
+      {
+        <button onClick={startHandler}>
+          {isStart && 'Stop Game'}
+          {!isStart && 'Start Game'}
+        </button>
+      }
+      {/* {isStart && <button onClick={() => stopHandler()}>Stop Game</button>} */}
     </div>
   );
 };
