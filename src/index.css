@@ -45,6 +45,30 @@ header {
     height: 160px !important;
   }
 }
+@media (max-width: 400px) {
+  .container {
+    margin-left: 20% !important;
+    grid-auto-flow: column;
+    max-height: 20rem;
+    max-width: 20rem;
+    padding: 0;
+    margin: auto;
+    justify-content: center;
+  }
+  .card-img {
+    font-size: 3.5rem !important;
+  }
+  .card {
+    height: 4rem !important;
+  }
+  .container button {
+    display: block;
+    grid-row: 7/9;
+    left: -89px;
+    max-width: 80px;
+    height: 120px !important;
+  }
+}
 
 h1 {
   margin-top: 5rem;
