@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Card from './Card';
 
 const Cards = () => {
@@ -65,7 +65,7 @@ const Cards = () => {
     }
   };
 
-  const selcteHandler = (id) => {
+  const selectHandler = (id) => {
     if (!isStart) return;
     if (isTwo) return;
     if (cards[id].state === 'correct') return;
@@ -79,14 +79,11 @@ const Cards = () => {
     }
   };
   const startHandler = () => {
-    if (!isStart) return setIsStart(!isStart);
-    setIsStart(!isStart);
+    if (!isStart) return setIsStart((isStartPrev) => !isStartPrev);
+    setIsStart((isStartPrev) => !isStartPrev);
+    setPrev(-1);
     setCards(cardsInfo.sort(() => Math.random() - 0.5));
   };
-  // const stopHandler = () => {
-  //   setIsStart(!isStart);
-  //   setCards(cardsInfo.sort(() => Math.random() - 0.5));
-  // };
 
   return (
     <div className="container">
@@ -96,16 +93,14 @@ const Cards = () => {
           item={item}
           id={i}
           isStart={isStart}
-          selcteHandler={selcteHandler}
+          selectHandler={selectHandler}
         />
       ))}
       {
         <button onClick={startHandler}>
-          {isStart && 'Stop Game'}
-          {!isStart && 'Start Game'}
+          {isStart ? 'Stop Game' : 'Start Game'}
         </button>
       }
-      {/* {isStart && <button onClick={() => stopHandler()}>Stop Game</button>} */}
     </div>
   );
 };

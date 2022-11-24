@@ -1,15 +1,16 @@
 import React from 'react';
 
-function Card({ item, isStart, selcteHandler, id }) {
-  const itemClass = item.state ? 'active ' + item.state : ' ';
+function Card({ item, isStart, selectHandler, id }) {
+  const itemClass = isStart && item.state ? 'active ' + item.state : ' ';
   const cardRotate = isStart ? 'card-rotate' : '';
-  const enojyRotate = isStart ? 'emojy-rotate' : '';
+  const emojyRotate = isStart ? 'emojy-rotate' : '';
+
   return (
     <div
       className={`card + ${itemClass} ${cardRotate}`}
-      onClick={() => selcteHandler(id)}
+      onClick={() => selectHandler(id)}
     >
-      <div className={`card-img ${enojyRotate}`}>{item.img}</div>
+      <div className={`card-img ${emojyRotate}`}>{item.img}</div>
     </div>
   );
 }

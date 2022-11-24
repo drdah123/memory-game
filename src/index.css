@@ -59,7 +59,11 @@ header {
     margin-left: 80px;
   }
   .container button {
-    height: 120px !important;
+    text-align: center;
+    margin-left: -25px;
+    height: 80px !important;
+    padding-right: 120px !important;
+    transform: rotate(90deg);
   }
 }
 
@@ -152,6 +156,7 @@ h1 {
 }
 .card.correct {
   background: #70db73;
+  transform: rotateY(180);
 }
 .card.active.card-rotate {
   transform: rotateY(180);
